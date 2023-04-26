@@ -1,0 +1,30 @@
+name: Validate
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      max-parallel: 8
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Lint with pylint
+        run: |
+          pylint modules
+          pylint fixtures
+      - name: Test with pytest
+        run: |
+          pytest -v
