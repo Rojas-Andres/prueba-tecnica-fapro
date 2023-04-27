@@ -36,3 +36,7 @@ En el caso de querer ejecutar fastapi con debug esta el launch.json configurado
 # Documentacion fastapi
 
 ![](images/Documentation_fastapi.png)
+
+# El proyecto cuenta con integracion de github actions para validar los tests
+
+![](images/github_actions.png)
