@@ -1,3 +1,5 @@
+# Fapro - Prueba Backend
+Versión Python: `^3.9`
 # Correr Proyecto con Docker
     Pasos a ejecutar:
         - docker build -t fastapi-fapro .
