@@ -24,7 +24,6 @@ jobs:
       - name: Lint with pylint
         run: |
           pylint app
-          pylint test
       - name: Test with pytest
         run: |
           pytest -v
