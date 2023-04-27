@@ -29,3 +29,8 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 
 En el caso de querer ejecutar fastapi con debug esta el launch.json configurado
+
+
+# Documentacion fastapi
+
+![](images/Documentation_fastapi.png)
