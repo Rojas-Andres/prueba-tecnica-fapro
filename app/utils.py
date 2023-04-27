@@ -66,13 +66,14 @@ def fetch_data_get(url: str, params: dict = None, headers: dict = None):
 
     Args:
         url (str): La URL a la que se debe realizar la solicitud.
-        params (dict, optional): Los parámetros que se deben enviar en la solicitud. Defaults to None.
-        headers (dict, optional): Los encabezados que se deben enviar en la solicitud. Defaults to None.
-
+        params (dict, optional):
+            Los parámetros que se deben enviar en la solicitud. Defaults to None.
+        headers (dict, optional):
+            Los encabezados que se deben enviar en la solicitud. Defaults to None.
     Returns:
         requests.Response: La respuesta obtenida de la URL.
     """
-    response = requests.get(url, params=params, headers=headers)
+    response = requests.get(url, params=params, headers=headers, timeout=5)
     if not response.ok:
         raise HTTPException(status_code=response.status_code, detail=f"Error {response.status_code}")
     return response

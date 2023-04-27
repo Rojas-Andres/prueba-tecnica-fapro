@@ -23,8 +23,8 @@ jobs:
           pip install -r local.txt
       - name: Lint with pylint
         run: |
-          pylint modules
-          pylint fixtures
+          pylint app
+          pylint test
       - name: Test with pytest
         run: |
           pytest -v
