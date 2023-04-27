@@ -19,4 +19,4 @@ def get_data_sii_filter(
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    return {"value": value, "value_format": convert_to_float(value)}
+    return {"value": value, "value_format": convert_to_float(value) if value else None}

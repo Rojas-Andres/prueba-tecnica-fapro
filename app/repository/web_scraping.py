@@ -14,5 +14,7 @@ def get_data_sii(date: date):
     soup = BeautifulSoup(response.text, "html.parser")
     month = month_spanish(date.strftime("%B"))
     filter_month = soup.find("div", {"id": f"mes_{month}"})
+    if not filter_month:
+        raise ValueError("No se encontró el mes ingresado.")
     value = get_value_day(filter_month, date.day)
     return value
