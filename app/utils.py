@@ -42,7 +42,7 @@ def validate_date(date: str):
     Valida que la fecha ingresada sea válida.
     """
     try:
-        date = datetime.datetime.strptime(date, "%Y-%m-%d")
+        date = datetime.datetime.strptime(date, "%d-%m-%Y")
         if date.year < 2013:
             raise ValueError("La fecha ingresada es menor al año 2013.")
     except ValueError as e:
