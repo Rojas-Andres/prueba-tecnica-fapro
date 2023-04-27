@@ -8,5 +8,21 @@
             "program": "${workspaceFolder}/main.py",
             "console": "integratedTerminal"
         },
+        // Pytest local windows
+        {
+            "name": "Pytest windows",
+            "type": "python",
+            "request": "launch",
+            // windows
+            "program": "${workspaceFolder}/venv/Scripts/pytest.exe",
+            // linux
+            // "program": "${workspaceFolder}/.venv/bin/pytest",
+            "args": [
+                "${workspaceFolder}/tests/web_scraping_router_test.py",
+                "-vv",
+                "-s"
+            ],
+            "justMyCode": true
+        },
     ]
 }

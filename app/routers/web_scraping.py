@@ -15,6 +15,8 @@ def get_data_sii_filter(
         value = web_scraping.get_data_sii(date.date())
     except HTTPException as e:
         raise e
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     return {"value": value, "value_format": convert_to_float(value)}

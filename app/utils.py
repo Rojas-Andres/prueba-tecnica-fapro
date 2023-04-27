@@ -17,6 +17,9 @@ def convert_to_float(value: str):
 
 
 def month_spanish(month: str):
+    """
+    Convierte el nombre del mes en español.
+    """
     months = {
         "January": "enero",
         "February": "febrero",
@@ -41,15 +44,16 @@ def validate_date(date: str):
     try:
         date = datetime.datetime.strptime(date, "%Y-%m-%d")
         if date.year < 2013:
-            raise HTTPException(status_code=400, detail="La fecha ingresada es menor al año 2013.")
-    except ValueError:
-        raise HTTPException(
-            status_code=400, detail=f"La fecha ingresada no es valida {date} recuerda el formato (YYYY-MM-DD)."
-        )
+            raise ValueError("La fecha ingresada es menor al año 2013.")
+    except ValueError as e:
+        raise ValueError(str(e))
     return date
 
 
 def get_value_day(soup: BeautifulSoup, day: int):
+    """
+    Obtiene el valor de la UF de un día determinado.
+    """
     strong_element = soup.find("strong", text=day)
     th_parent = strong_element.find_parent("th")
     real_value = th_parent.find_next_sibling("td")
@@ -70,5 +74,5 @@ def fetch_data_get(url: str, params: dict = None, headers: dict = None):
     """
     response = requests.get(url, params=params, headers=headers)
     if not response.ok:
-        raise HTTPException(status_code=response.status_code, detail=f"Error:{response.status_code}")
+        raise HTTPException(status_code=response.status_code, detail=f"Error {response.status_code}")
     return response
